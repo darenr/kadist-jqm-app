@@ -23,7 +23,7 @@ approot = "http://0.0.0.0:5000"
 
 site = json.loads('''
 {
-	"navpages": [{
+	"pages": [{
 		"title": "home",
 		"img": "/static/images/logo.gif",
 		"id": "home",
@@ -102,7 +102,7 @@ def homepage():
                            title=project_name,
                            approot=approot,
                            project_name=project_name,
-                           pages=site['navpages'])
+                           pages=site['pages'])
 
 
 if __name__ == "__main__":
