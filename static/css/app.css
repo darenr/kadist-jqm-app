@@ -29,7 +29,7 @@
 }
 
 .app-list .item-html {
-    padding-top: 5px;
+    padding-top: 10px;
     font-size: 12px;
     word-wrap: break-word !important;
     text-overflow: clip;
