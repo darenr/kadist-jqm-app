@@ -1,0 +1,42 @@
+.thumbnail {
+    display: block;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+.app-list {
+    border-radius: 4px;
+    padding: 4px;
+    padding-bottom: 12px;
+}
+
+.app-list .item-title {
+    font-size: 18px;
+    word-wrap: break-word !important;
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.item-verbatim {
+  padding: 10px
+}
+
+.app-list .item-html {
+    padding-top: 5px;
+    font-size: 12px;
+    word-wrap: break-word !important;
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.app-list a {
+    text-decoration: none;
+}
