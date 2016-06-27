@@ -29,7 +29,7 @@ site = json.loads('''
 		"id": "home",
 		"sections": [{
 			"title": "Kadist Locations:",
-      "icon": "location",
+      "icon": "pin",
 			"list": [{
 				"img": "/static/images/kadist-sf.jpg",
 				"title": "San Francisco",

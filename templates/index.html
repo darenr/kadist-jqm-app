@@ -5,7 +5,7 @@
 	<title>{{title}}</title>
 
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="apple-mobile-web-app-title" content="{{project_name}}">
 
 	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
@@ -14,11 +14,28 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/apple-touch-icon-72x72.png" />
 	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/apple-touch-icon-114x114.png" />
 
-	<link rel="stylesheet" href="{{ url_for('static', filename='vendor/jquery.mobile.flatui.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 
-	<script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='vendor/jquery.mobile-1.3.1.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/vendor/waves/waves.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/vendor/wow/animate.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/nativedroid2.css" />
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="/static/vendor/waves/waves.min.js"></script>
+	<script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/js/nativedroid2.js"></script>
+
+	<style>
+		/* Prevent FOUC */
+		body { opacity: 0; }
+	</style>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 
 </head>
 
@@ -26,49 +43,52 @@
 	{% for page in pages %}
 	<div data-role="page" id="{{page['id']}}">
 
-		<div data-role="header">
-			<a data-iconpos="notext" href="#home" data-role="button" data-icon="home" title="Home">Home</a>
-			<h1>{{project_name}}</h1>
+      	<div data-role="header" data-position="fixed" class="wow fadeIn">
+        	<a href="#home" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+			<h1 class="wow fadeIn" data-wow-delay='0.4s' >{{project_name}}</h1>
 		</div>
 		<!-- /header -->
 
-		<div data-role="content" class="ui-content" role="main">
+		<div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
 
 			<div id="branding-header">
 				<img src="{{page['img']}}" width="100%">
 			</div>
 
 			{% for section in page['sections'] %}
-			<ul data-role="listview" data-inset="true">
+			<ul data-role="listview" data-icon="false">
 
-				<li data-role="list-divider" data-theme="b">
-					{% if section['icon'] %}
-					<span class="ui-icon-flat-{{section['icon']}}">&nbsp;</span> {% endif %} {{ section['title'] }}
-				</li>
-			</ul>
+			<ul data-role="listview" data-icon="false">
 
-
-			<ul data-role="listview" data-inset="true">
 				{% if section['html'] %}
 				<div class="item-verbatim">
 					{{section['html']|safe}}
 				</div>
-				{% endif %} {% if section['list'] %} {% for item in section['list'] %}
-				<li class="app-list">
-					<a href="{{item['link']}}" data-transition="fade">
-						<img class="thumbnail" height="100%" src="{{item['img']}}" />
-						<div class="item-title">
-							{{item['title']}}
-						</div>
-						{% if item['html'] %}
-						<div class="item-html">
-							{{item['html']|safe}}
-						</div>
-						{% endif %}
+				{% endif %}
 
-					</a>
+				<li data-role="list-divider" >
+					{% if section['icon'] %}
+					<i class="zmdi zmdi-{{section['icon']}}">&nbsp;</i> {% endif %} {{ section['title'] }}
 				</li>
-				<br> {% endfor %} {% endif %}
+
+				{% if section['list'] %}
+					{% for item in section['list'] %}
+					<li class="app-list">
+						<a href="{{item['link']}}" data-transition="fade">
+							<img src="{{item['img']}}" class="ui-thumbnail ui-thumbnail-circular" />
+							<h2>
+								{{item['title']}}
+							</h2>
+							{% if item['html'] %}
+							<p>
+								{{item['html']|safe}}
+							</p>
+							{% endif %}
+
+						</a>
+					</li>
+					{% endfor %}
+				{% endif %}
 			</ul>
 			{% endfor %}
 		</div>
