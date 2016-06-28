@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="no-fouc" lang="en">
 
 <!-- https://github.com/wildhaber/nativeDroid2 -->
 
@@ -34,11 +34,16 @@
 
 	<link rel="stylesheet" type="text/css" href="/static/css/app.css?{{version}}" />
 
+	<style>
+		/* Prevent FOUC */
+		#no-fouc { opacity: 0; }
+	</style>
+
 </head>
 
 <body>
 	{% for page in pages %}
-	<div data-role="page" id="{{page['id']}}">
+	<div data-role="page" id="{{page['id']}}" class="waves">
 
   	<div data-role="header" data-position="fixed" class="wow fadeIn">
       <a href="#home" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-home"></i></a>
@@ -55,7 +60,6 @@
 
 			<div class="ui-content-margin">
 				{% for section in page['sections'] %}
-				<ul data-role="listview" data-icon="false">
 
 					{% if section['html'] %}
 					<div class="item-verbatim">
@@ -63,27 +67,29 @@
 					</div>
 					{% endif %}
 
-					<li data-role="list-divider" >
-						{% if section['icon'] %}
-						<i class="zmdi zmdi-{{section['icon']}}">&nbsp;</i> {% endif %} {{ section['title'] }}
-					</li>
+					<ul data-role="listview" data-icon="false">
 
-					{% if section['list'] %}
-						{% for item in section['list'] %}
-						<li class="app-list">
-							<a href="{{item['link']}}" data-transition="slide" >
-								<img src="{{item['img']}}" class="ui-thumbnail ui-thumbnail-bordered" />
-								<h2>
-									{{item['title']}}
-								</h2>
-								{% if item['html'] %}
-								<p>
-									{{item['html']|safe}}
-								</p>
-								{% endif %}
-							</a>
+						<li data-role="list-divider" >
+							{% if section['icon'] %}
+							<i class="zmdi zmdi-{{section['icon']}}">&nbsp;</i> {% endif %} {{ section['title'] }}
 						</li>
-						<br>
+
+						{% if section['list'] %}
+							{% for item in section['list'] %}
+							<li class="app-list">
+								<a href="{{item['link']}}" data-transition="slide" >
+									<img src="{{item['img']}}" class="ui-thumbnail ui-thumbnail-bordered" />
+									<h2>
+										{{item['title']}}
+									</h2>
+									{% if item['html'] %}
+									<p>
+										{{item['html']|safe}}
+									</p>
+									{% endif %}
+								</a>
+							</li>
+							<br>
 						{% endfor %}
 					{% endif %}
 				</ul>
@@ -95,7 +101,7 @@
 	{% endfor %}
 
 
-	<div data-role="page" id="about">
+	<div data-role="page" id="about" class="waves">
 
 		<div data-role="header">
 			<a data-iconpos="notext" href="#home" data-role="button" data-icon="home" title="Home">Home</a>
@@ -207,14 +213,20 @@
 
 
 
-    <script src="/static/js/jquery.min.js?{{version}}"></script>
-    <xscript src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js?{{version}}"></script>
-    <script src="/static/js/jquery.mobile.min.js?{{version}}"></script>
     <script src="/static/vendor/waves/waves.min.js?{{version}}"></script>
+    <script src="/static/js/jquery.min.js?{{version}}"></script>
+    <script src="/static/js/jquery.mobile.min.js?{{version}}"></script>
 		<script src="/static/vendor/wow/wow.min.js?{{version}}"></script>
     <script src="/static/js/nativedroid2.js?{{version}}"></script>
 
 		<script type="text/javascript">
+
+			$(function() {
+        Waves.init();
+        Waves.attach('.waves', null, true);
+
+				$("#no-fouc").delay(250).animate({"opacity": "1"}, 250);
+			});
 
 		</script>
 
