@@ -25,7 +25,7 @@ site = json.loads('''
 {
 	"pages": [{
 		"title": "home",
-		"img": "/static/images/logo.gif",
+		"img": "/static/images/logo.png",
 		"id": "home",
 		"sections": [{
 			"title": "Kadist Locations:",
