@@ -1,10 +1,4 @@
-//
-// ...the magic starts here...
-//
-/////////////////////////////////
 
-
-// ND2 Widgets
 (function($){
 	$.widget("nd2.gallery",{
 		options: {
@@ -597,7 +591,7 @@
 
 			// nd2 Project Settings
 				(function ($) {
-				    $.nd2 = function (options) {
+					$.nd2 = function (options) {
 
 									var _self = this;
 
@@ -649,8 +643,8 @@
 
 									_self.iniWaves = function() {
 										if(typeof Waves !== "undefined") {
-										    Waves.attach('a', ['waves-button']);
-										    Waves.attach('button', ['waves-button']);
+										    Waves.attach('.fancy a', ['waves-button']);
+										    Waves.attach('.fancy button', ['waves-button']);
 										    Waves.init();
 												$("body").find(".ui-flipswitch-on").removeClass("waves-effect");
 												Waves.attach('.ui-flipswitch',['waves-button','waves-light']);

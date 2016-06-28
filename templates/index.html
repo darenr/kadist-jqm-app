@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="no-fouc" lang="en">
+<html lang="en">
 
 <!-- https://github.com/wildhaber/nativeDroid2 -->
 
@@ -36,23 +36,28 @@
 
 	<style>
 		/* Prevent FOUC */
-		#no-fouc { opacity: 0; }
+		body { opacity: 0; }
 	</style>
+
 
 </head>
 
 <body>
-	{% for page in pages %}
-	<div data-role="page" id="{{page['id']}}" class="waves">
 
-  	<div data-role="header" data-position="fixed" class="wow fadeIn">
-      <a href="#home" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-home"></i></a>
-			<h1 class="wow fadeIn" data-wow-delay='0.4s' >{{project_name}}</h1>
-      <a href="#about" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-info"></i></a>
+	<!-- make navigation pages -->
+
+	{% for page in pages %}
+	<div data-role="page" id="{{page['id']}}">
+
+	  	<div data-role="header" data-position="fixed" class="wow fadeIn">
+	      <a href="#home" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-home"></i></a>
+				<h1 class="wow fadeIn" data-wow-delay='0.4s'>{{project_name}}</h1>
+		  <a href="#about" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-info"></i></a>
 		</div>
+
 		<!-- /header -->
 
-		<div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
+		<div role="main" class="ui-content wow fadeIn fancy" data-inset="false" data-wow-delay="0.2s">
 
 			<div id="branding-header">
 				<img src="{{page['img']}}?{{version}}" width="100%">
@@ -100,8 +105,59 @@
 	<!-- /page -->
 	{% endfor %}
 
+	<!-- make work's pages -->
+	{% for anchor, page in works.iteritems()  %}
+		<div data-role="page" id="{{anchor}}">
+			<div data-role="header">
+				<a data-iconpos="notext" href="#home" data-role="button" data-icon="home" title="Home">Home</a>
+				<h1>{{project_name}}</h1>
+			</div>
+			<!-- /header -->
 
-	<div data-role="page" id="about" class="waves">
+			<div data-role="content" role="main">
+				{% for img in page['img'] %}
+					<div class="nd2-card">
+						<div class="card-media">
+							<img src="{{img}}?{{version}}">
+						</div>
+
+						<div class="card-supporting-text">
+							<p>{{page['title']}} - #{{loop.index}}</p>
+						</div>
+					</div>
+				{% endfor %}
+
+				<div class="nd2-card">
+					<div class="card-supporting-text">
+						{% for text in page['html'] %}
+							<p>{{text}}</p>
+						{% endfor %}
+					</div>
+				</div>
+
+				{% if page['videos'] %}
+					{% for video in page['videos'] %}
+						<div class="nd2-card">
+							<div class="card-media">
+								{{video|safe}}
+							</div>
+
+							<div class="card-supporting-text">
+								<p>{{page['title']}} - #{{loop.index}}</p>
+							</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+
+
+			</div>
+		</div>
+
+	<!-- /page -->
+	{% endfor %}
+
+
+	<div data-role="page" id="about">
 
 		<div data-role="header">
 			<a data-iconpos="notext" href="#home" data-role="button" data-icon="home" title="Home">Home</a>
@@ -216,20 +272,14 @@
     <script src="/static/vendor/waves/waves.min.js?{{version}}"></script>
     <script src="/static/js/jquery.min.js?{{version}}"></script>
     <script src="/static/js/jquery.mobile.min.js?{{version}}"></script>
-		<script src="/static/vendor/wow/wow.min.js?{{version}}"></script>
+	<script src="/static/vendor/wow/wow.min.js?{{version}}"></script>
     <script src="/static/js/nativedroid2.js?{{version}}"></script>
 
 		<script type="text/javascript">
 
 			$(function() {
-				var config = {
-				    duration: 500,
-				    delay: 200
-				};
-        Waves.init(config);
-        Waves.attach('.waves', 'waves-block', true);
-
-				$("#no-fouc").delay(250).animate({"opacity": "1"}, 250);
+				$.nd2();
+				//$("#no-fouc").delay(250).animate({"opacity": "1"}, 250);
 			});
 
 		</script>
