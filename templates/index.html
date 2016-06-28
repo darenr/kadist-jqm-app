@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+<!-- https://github.com/wildhaber/nativeDroid2 -->
+
 <head>
 	<title>{{title}}</title>
 
@@ -17,16 +19,14 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/apple-touch-icon-72x72.png" />
 	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/apple-touch-icon-114x114.png" />
 
-
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/js/jquery.mobile.min.css" />
 
 	<link rel="stylesheet" type="text/css" href="/static/vendor/waves/waves.min.css" />
 	<link rel="stylesheet" type="text/css" href="/static/vendor/wow/animate.css" />
 	<link rel="stylesheet" type="text/css" href="/static/css/nativedroid2.css" />
 
 	<link rel="stylesheet" type="text/css" href="/static/css/app.css" />
-
 
 </head>
 
@@ -37,6 +37,7 @@
   	<div data-role="header" data-position="fixed" class="wow fadeIn">
       <a href="#home" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-home"></i></a>
 			<h1 class="wow fadeIn" data-wow-delay='0.4s' >{{project_name}}</h1>
+      <a href="#about" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-info"></i></a>
 		</div>
 		<!-- /header -->
 
@@ -46,40 +47,42 @@
 				<img src="{{page['img']}}" width="100%">
 			</div>
 
-			{% for section in page['sections'] %}
-			<ul data-role="listview" data-icon="false">
+			<div class="ui-content-margin">
+				{% for section in page['sections'] %}
+				<ul data-role="listview" data-icon="false">
 
-				{% if section['html'] %}
-				<div class="item-verbatim">
-					{{section['html']|safe}}
-				</div>
-				{% endif %}
+					{% if section['html'] %}
+					<div class="item-verbatim">
+						{{section['html']|safe}}
+					</div>
+					{% endif %}
 
-				<li data-role="list-divider" >
-					{% if section['icon'] %}
-					<i class="zmdi zmdi-{{section['icon']}}">&nbsp;</i> {% endif %} {{ section['title'] }}
-				</li>
-
-				{% if section['list'] %}
-					{% for item in section['list'] %}
-					<li class="app-list">
-						<a href="{{item['link']}}" >
-							<img src="{{item['img']}}" class="ui-thumbnail ui-thumbnail-bordered" />
-							<h2>
-								{{item['title']}}
-							</h2>
-							{% if item['html'] %}
-							<p>
-								{{item['html']|safe}}
-							</p>
-							{% endif %}
-						</a>
+					<li data-role="list-divider" >
+						{% if section['icon'] %}
+						<i class="zmdi zmdi-{{section['icon']}}">&nbsp;</i> {% endif %} {{ section['title'] }}
 					</li>
-					<br>
-					{% endfor %}
-				{% endif %}
-			</ul>
-			{% endfor %}
+
+					{% if section['list'] %}
+						{% for item in section['list'] %}
+						<li class="app-list">
+							<a href="{{item['link']}}" >
+								<img src="{{item['img']}}" class="ui-thumbnail ui-thumbnail-bordered" />
+								<h2>
+									{{item['title']}}
+								</h2>
+								{% if item['html'] %}
+								<p>
+									{{item['html']|safe}}
+								</p>
+								{% endif %}
+							</a>
+						</li>
+						<br>
+						{% endfor %}
+					{% endif %}
+				</ul>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 	<!-- /page -->
@@ -100,46 +103,98 @@
 				<img src="{{pages[0]['img']}}" width="100%">
 			</div>
 
+			<div class="ui-content-margin">
 
-			<h3>ABOUT</h3>
-			<p>Kadist is a non-profit arts organization that believes the arts make a fundamental contribution to a progressive society. Its programs actively encourage the engagement of artists, often represented in its collection, with the important issues of today
-				to promote their role as cultural agents. Kadist's collections and productions reflect the global scope of contemporary art, and its programs develop collaborations with artists, curators and many art organizations around the world. Local programs
-				in Kadist's hubs of Paris and San Francisco, including exhibitions, public events, residencies and educational initiatives, aim at creating vibrant conversations about contemporary art and ideas.
+				<div class="nd2-card">
+					<div class="card-title has-supporting-text">
+						<h3 class="card-primary-title">About</h3>
+					</div>
+					<div class="card-supporting-text has-action has-title">
+						Kadist is a non-profit arts organization that believes the arts make a fundamental contribution to a progressive society. Its programs actively encourage the engagement of artists, often represented in its collection, with the important issues of today
+						to promote their role as cultural agents. Kadist's collections and productions reflect the global scope of contemporary art, and its programs develop collaborations with artists, curators and many art organizations around the world. Local programs
+						in Kadist's hubs of Paris and San Francisco, including exhibitions, public events, residencies and educational initiatives, aim at creating vibrant conversations about contemporary art and ideas.
+					</div>
+				</div>
 
-				<b>Vincent Worms, Chairman</b>
-
-				<h2>San Francisco</h2>
-				<center>
-					<div style="width:90%;max-width:100%;overflow:hidden;height:500px;color:red;">
-						<div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;">
-							<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=3295+20th+Street,+San+Francisco,+CA+94110,+United+States&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
-						</div>
-						<style>
-							#google-maps-canvas img {
-								max-width: none!important;
-								background: none!important;
-								font-size: inherit;
-							}
-						</style>
+				<div class="nd2-card">
+					<div class="card-media">
+						<img src="/static/images/vincent.jpg">
 					</div>
 
-					<h2>Paris</h2>
-					<div style="width:90%;max-width:100%;overflow:hidden;height:500px;color:red;">
-						<div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;">
-							<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=19bis/21+rue+des+Trois+Frères,++75018++paris&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
-						</div>
-						<style>
-							#google-maps-canvas img {
-								max-width: none!important;
-								background: none!important;
-								font-size: inherit;
-							}
-						</style>
+					<div class="card-supporting-text">
+						<h3>Vincent Worms, Chairman</h3>
 					</div>
-				</center>
+				</div>
 
 
-			</p>
+				<div class="nd2-card">
+					<div class="card-supporting-text">
+						<h4>SAN FRANCISCO STAFF</h4>
+						<ul>
+							<li><b>Pete Belkin:</b> Media and Production
+							<li><b>Devon Bella:</b> Collections and Residencies
+						  <li><b>Arash Fayez:</b> Online Mediation
+						  <li><b>Marie Martraire:</b> Asia Programs
+						  <li><b>Alex Matson:</b> Administration
+						  <li><b>Heidi Rabben:</b> Events and Exhibitions
+						</ul>
+					</div>
+				</div>
+
+				<div class="nd2-card">
+					<div class="card-media">
+						<div style="width:100%;max-width:100%;overflow:hidden;height:350px;color:red;">
+							<div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;">
+								<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=3295+20th+Street,+San+Francisco,+CA+94110,+United+States&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+							</div>
+							<style>
+								#google-maps-canvas img {
+									max-width: none!important;
+									background: none!important;
+									font-size: inherit;
+								}
+							</style>
+						</div>
+					</div>
+
+					<div class="card-supporting-text">
+						<h3>San Francisco</h3>
+					</div>
+				</div>
+
+				<div class="nd2-card">
+					<div class="card-supporting-text">
+						<h4>PARIS STAFF</h4>
+						<ul>
+							<li><b>Émilie Villez:</b> Director
+							<li><b>Léna Monnier / Élodie Royer:</b> Communications and Collections
+						  <li><b>Sophie Potelon:</b> Production and Mediation
+						</ul>
+					</div>
+				</div>
+
+				<div class="nd2-card">
+					<div class="card-media">
+						<div style="width:100%;max-width:100%;overflow:hidden;height:350px;color:red;">
+							<div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;">
+								<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=19bis/21+rue+des+Trois+Frères,++75018++paris&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+							</div>
+							<style>
+								#google-maps-canvas img {
+									max-width: none!important;
+									background: none!important;
+									font-size: inherit;
+								}
+							</style>
+						</div>
+					</div>
+
+					<div class="card-supporting-text">
+						<h3>Paris</h3>
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
 	<!-- /page -->

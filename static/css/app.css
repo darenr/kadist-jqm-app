@@ -1,4 +1,6 @@
 #branding-header {
+  padding: 0;
+  margin: 0;
   padding-bottom: 15px;
 }
 
@@ -19,6 +21,14 @@
     position: absolute;
     left: 5px;
     top: 5px;
+}
+
+.ui-content {
+    padding: 0;
+}
+
+.ui-content-margin {
+  padding: 1em;
 }
 
 .ui-listview > li h2 {

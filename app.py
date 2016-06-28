@@ -12,7 +12,7 @@ import sys
 import collections
 from flask.ext.cors import CORS
 
-project_name = 'Kadist Mobile'
+project_name = '- Kadist -'
 
 app = Flask(__name__)
 Compress(app)
@@ -31,17 +31,17 @@ site = json.loads('''
 			"title": "Kadist Locations:",
       "icon": "pin",
 			"list": [{
-				"img": "/static/images/kadist-sf.jpg",
+				"img": "/static/images/united-states-of-america-flag-square-icon-256.png",
 				"title": "San Francisco",
 				"html": "<p>3295 20th Street<br>(415) 738-8668</p>",
 				"link": "#kadist-sf"
 			}, {
-				"img": "/static/images/kadist-paris.jpg",
+				"img": "/static/images/france-flag-square-icon-256.png",
 				"title": "Paris",
 				"html": "<p>19bis/21 rue des Trois Frères<br>+33 1 42 51 83 49</p>",
 				"link": "#kadist-paris"
 			}, {
-				"img": "/static/images/kadist-colombia.jpg",
+				"img": "/static/images/colombia-flag-square-icon-256.png",
 				"title": "Colombia",
 				"link": "#kadist-columnbia"
 			}]
@@ -89,6 +89,7 @@ site = json.loads('''
       "list": [{
      				"img": "/static/images/k.jpg",
             "title": "About Kadist Foundation",
+						"html": "maps, info, staff",
             "link": "#about"
      }]
 		}
