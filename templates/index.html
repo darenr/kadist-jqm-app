@@ -222,7 +222,11 @@
 		<script type="text/javascript">
 
 			$(function() {
-        Waves.init();
+				var config = {
+				    duration: 500,
+				    delay: 200
+				};
+        Waves.init(config);
         Waves.attach('.waves', 'waves-block', true);
 
 				$("#no-fouc").delay(250).animate({"opacity": "1"}, 250);

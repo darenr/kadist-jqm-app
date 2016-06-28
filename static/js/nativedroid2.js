@@ -6,7 +6,6 @@
 
 // ND2 Widgets
 (function($){
-
 	$.widget("nd2.gallery",{
 		options: {
 			count : 15,
@@ -56,6 +55,7 @@
 
 					// Apply waves.js
 					if(typeof Waves !== "undefined") {
+						  console.log("apply waves...")
 					    Waves.attach('a', ['waves-button']);
 					    Waves.attach('button', ['waves-button']);
 					    Waves.init();
@@ -622,7 +622,6 @@
 											_self.iniWow();
 											_self.iniWaves();
 											_self.iniSmoothTransition();
-											_self.iniGoogleAnalytics();
 
 									};
 
@@ -682,33 +681,6 @@
 										        hash: a.hash,
 										        search: a.search
 										    };
-									};
-
-									_self.iniGoogleAnalytics = function() {
-
-											var _ga = {
-												send : function(url) {
-												  (!url) ? ga('send', 'pageview') : ga('send', 'pageview', url);
-												}
-											};
-
-											if(_self.options.stats.analyticsUA) {
-											  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-											  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-											  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-											  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-											  ga('create', _self.options.stats.analyticsUA, 'auto');
-												_ga.send(null);
-
-												// Trigger Page Change
-
-												$("body").on("pagechange",function(evt,data) {
-													_ga.send(_self.getUrlParts(data.options.absUrl).pathname);
-												});
-
-											}
-
 									};
 
 									_self.build();
