@@ -52,7 +52,7 @@ site = json.loads('''
 		"img": "/static/images/kadist-sf.jpg",
 		"id": "kadist-sf",
 		"sections": [{
-			"title": "SF Events:",
+			"title": "SF Events & Exhibitions:",
       "icon": "calendar",
 			"list": [{
 				"img": "/static/images/event-1.jpg",
@@ -69,11 +69,7 @@ site = json.loads('''
 				"title": "CARLOS AMORALES: CYCLOPE",
 				"html": "SAN FRANCISCO 4.30.2016",
 				"link": "#work2462"
-			}]
-		}, {
-			"title": "SF Exhibitions:",
-      "icon": "calendar",
-			"list": [{
+			},{
 				"img": "/static/images/exhib-1.jpg",
 				"title": "SHOOSHIE SULAIMAN",
 				"html": "Opening reception: Friday, June 10 from 6 to 9pm<br>Exhibition from June 11 to July 31, 2016",
@@ -84,15 +80,6 @@ site = json.loads('''
 				"html": "Wednesday, May 11, 6-9pm",
 				"link": "#work2466"
 			}]
-		}, {
-			"title": "SF About:",
-      "icon": "info",
-      "list": [{
-     				"img": "/static/images/k.jpg",
-            "title": "About Kadist Foundation",
-						"html": "maps, info, staff",
-            "link": "#about"
-     }]
 		}
 	 ]
 	}]
@@ -101,13 +88,15 @@ site = json.loads('''
 
 works = json.loads('''
 {
-	"pages": {
-		"work2473": {
+	"pages": [
+		{
+			"id": "work2473",
 			"title": "ANTHONY DISCENZA: THE REPOSITORY OF THE FUTURE",
 			"img": ["/static/images/works/2473.jpg"],
 			"html": ["The Repository is a proposed speculative research entity intended to track and analyze new developments in the future as they unfold. By identifying the future as a site of active construction, The Repository hopes to identify emergent narratives of the present which may not be otherwise apprehensible. On Saturday June 25th, Kadist hosts the first working session of The Repository to collectively review a selection of past, obsolete or present constructions of the future while introducing The Repository’s proposed strategies for implementation and development to come."]
 		},
-		"work2472": {
+		{
+			"id": "work2472",
 			"title": "MALIK GAINES ON SYLVESTER",
 			"img": ["/static/images/works/2472.jpg"],
 			"html": [
@@ -117,7 +106,8 @@ works = json.loads('''
 				"This program is made possible in part by Headlands Center for the Arts, where Gaines is currently artist in residence."
 			]
 		},
-		"work2462": {
+		{
+			"id": "work2462",
 			"title": "CARLOS AMORALES: CYCLOPE",
 			"img": [
 				"/static/images/works/2462.png"
@@ -126,7 +116,8 @@ works = json.loads('''
 				"For the last two years, Mexico-City based artist Carlos Amorales has been developing a series of works in relation to what he calls 'Cubismo ideológico'. Three films and a manifesto arose from this investigaton and Cyclope at Kadist marks the US premier of the first performance in this 'Cubismo ideológico' series. Philippe Eustachon, Enrique Arriaga, and special guest Elsa-Louise Manceaux join the artist in this percussive and spoken word concert."
 			]
 		},
-		"work2464": {
+		{
+			"id": "work2464",
 			"title": "SHOOSHIE SULAIMAN",
 			"img": [
 				"/static/images/works/2464a.jpg",
@@ -148,7 +139,8 @@ works = json.loads('''
 				 "<iframe width=\\"100%\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/N61kCnu-UyM\\" frameborder=\\"0\\" allowfullscreen></iframe>"
 			]
 		},
-		"work2466": {
+		{
+			"id": "work2466",
 			"title": "YIN-JU CHEN: EXTRASTELLAR EVALUATIONS",
 			"img": ["/static/images/works/2466.jpg"],
 			"html": [
@@ -163,7 +155,7 @@ works = json.loads('''
 				"Adama"
 			]
 		}
-	}
+	]
 }
 ''')
 
@@ -177,6 +169,15 @@ def homepage():
                            pages=site['pages'],
 													 works=works['pages'])
 
+@app.route('/left_panel', methods=['GET', 'POST'])
+def leftpanel():
+    return render_template("left_panel.html",
+                           title=project_name,
+                           approot=approot,
+                           project_name=project_name,
+													 version=project_version,
+                           pages=site['pages'],
+													 works=works['pages'])
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', threaded=True,
