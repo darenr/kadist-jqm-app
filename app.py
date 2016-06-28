@@ -33,12 +33,12 @@ site = json.loads('''
 			"list": [{
 				"img": "/static/images/kadist-sf.jpg",
 				"title": "San Francisco",
-				"html": "<p>3295 20th Street, (415) 738-8668</p>",
+				"html": "<p>3295 20th Street<br>(415) 738-8668</p>",
 				"link": "#kadist-sf"
 			}, {
 				"img": "/static/images/kadist-paris.jpg",
 				"title": "Paris",
-				"html": "<p>19bis/21 rue des Trois Frères, +33 1 42 51 83 49</p>",
+				"html": "<p>19bis/21 rue des Trois Frères<br>+33 1 42 51 83 49</p>",
 				"link": "#kadist-paris"
 			}, {
 				"img": "/static/images/kadist-colombia.jpg",

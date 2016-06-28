@@ -1,42 +1,37 @@
-.thumbnail {
-    display: block;
+#branding-header {
+  padding-bottom: 15px;
+}
+
+.ui-listview>.ui-li-has-thumb>.ui-btn, .ui-listview>.ui-li-static.ui-li-has-thumb {
+    min-height: 4.725em;
+    padding-left: 6.5em;
+    background-color: #eee;
+}
+
+.ui-listview > li p, .ui-listview > li h2 {
+    word-wrap: break-word !important;
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.ui-listview .ui-li-has-thumb>img:first-child, .ui-listview .ui-li-has-thumb>.ui-btn>img:first-child, .ui-listview .ui-li-has-thumb .ui-li-thumb {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.ui-listview > li h2 {
+  text-transform: uppercase;
+}
+
+.ui-thumbnail-bordered {
+
     padding: 4px;
-    line-height: 1.42857143;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
     -webkit-transition: border .2s ease-in-out;
     -o-transition: border .2s ease-in-out;
     transition: border .2s ease-in-out;
-}
-
-.app-list {
-    border-radius: 4px;
-    padding: 4px;
-    padding-bottom: 12px;
-}
-
-.app-list .item-title {
-    font-size: 18px;
-    word-wrap: break-word !important;
-    text-overflow: clip;
-    overflow: hidden;
-    white-space: normal;
-}
-
-.item-verbatim {
-  padding: 10px
-}
-
-.app-list .item-html {
-    padding-top: 10px;
-    font-size: 12px;
-    word-wrap: break-word !important;
-    text-overflow: clip;
-    overflow: hidden;
-    white-space: normal;
-}
-
-.app-list a {
-    text-decoration: none;
 }
