@@ -113,6 +113,13 @@
 
 			<nd2-include data-src="/left_panel"></nd2-include>
 
+			<div data-role="header">
+	      		<a data-ajax='false' href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+				<h1>{{project_name}}</h1>
+				<a data-iconpos="notext" href="#about" data-role="button" data-icon="info" title="About">About</a>
+			</div>
+			<!-- /header -->
+
 			<div data-role="content" role="main">
 				{% for img in work['img'] %}
 					<div class="nd2-card">
