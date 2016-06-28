@@ -25,7 +25,7 @@ approot = "http://0.0.0.0:5000"
 site = json.loads('''
 {
 	"pages": [{
-		"title": "home",
+		"title": "Kadist",
 		"img": "/static/images/kadist-logo.jpg",
 		"id": "home",
 		"sections": [{
@@ -48,7 +48,7 @@ site = json.loads('''
 			}]
 		}]
 	}, {
-		"title": "Kadist San Francisco",
+		"title": "Kadist SF",
 		"img": "/static/images/kadist-sf.jpg",
 		"id": "kadist-sf",
 		"sections": [{
