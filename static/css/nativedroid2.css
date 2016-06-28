@@ -23,9 +23,10 @@
 
 @import url("/static/css/flexboxgrid.min.css");
 @import url("/static/css/material-design-iconic-font.min.css");
+/*
 @import url(//fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic);
 @import url(//fonts.googleapis.com/css?family=Roboto:400,300,500,400italic,700,900);
-
+*/
 body {
 	-webkit-transition: opacity 0.4s;
 	-moz-transition: opacity 0.4s;

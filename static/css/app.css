@@ -1,8 +1,8 @@
 #branding-header {
   padding: 0;
   margin: 0;
-  padding-top: 15px;
-  padding-bottom: 5px;
+  padding-top: 0;
+  padding-bottom: 15px;
 }
 
 .ui-listview>.ui-li-has-thumb>.ui-btn, .ui-listview>.ui-li-static.ui-li-has-thumb {

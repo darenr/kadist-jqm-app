@@ -12,7 +12,8 @@ import sys
 import collections
 from flask.ext.cors import CORS
 
-project_name = 'Mobile Kadist'
+project_name = 'Kadist'
+project_version = '01'
 
 app = Flask(__name__)
 Compress(app)
@@ -25,7 +26,7 @@ site = json.loads('''
 {
 	"pages": [{
 		"title": "home",
-		"img": "/static/images/logo.png",
+		"img": "/static/images/kadist-logo.jpg",
 		"id": "home",
 		"sections": [{
 			"title": "Kadist Locations:",
@@ -164,6 +165,7 @@ def homepage():
                            title=project_name,
                            approot=approot,
                            project_name=project_name,
+													 version=project_version,
                            pages=site['pages'])
 
 

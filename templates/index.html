@@ -8,25 +8,31 @@
 
 	<meta charset="utf-8" />
  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="apple-mobile-web-app-title" content="{{project_name}}">
+	<meta name="apple-mobile-web-app-title" content="{{title}}">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-touch-fullscreen" content="yes" />
 
 	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
 
-	<link rel="apple-touch-icon" href="/static/images/launch_icon_57.png" />
+	<link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png" />
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/apple-touch-icon-72x72.png" />
-	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/touch/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/apple-touch-icon-152x152.png" />
 
-	<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="/static/js/jquery.mobile.min.css" />
 
-	<link rel="stylesheet" type="text/css" href="/static/vendor/waves/waves.min.css" />
-	<link rel="stylesheet" type="text/css" href="/static/vendor/wow/animate.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/nativedroid2.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css?{{version}}" />
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.mobile.min.css?{{version}}" />
 
-	<link rel="stylesheet" type="text/css" href="/static/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="/static/vendor/waves/waves.min.css?{{version}}" />
+	<link rel="stylesheet" type="text/css" href="/static/vendor/wow/animate.css?{{version}}" />
+	<link rel="stylesheet" type="text/css" href="/static/css/nativedroid2.css?{{version}}" />
+
+	<link rel="stylesheet" type="text/css" href="/static/css/app.css?{{version}}" />
 
 </head>
 
@@ -44,7 +50,7 @@
 		<div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
 
 			<div id="branding-header">
-				<img src="{{page['img']}}" width="100%">
+				<img src="{{page['img']}}?{{version}}" width="100%">
 			</div>
 
 			<div class="ui-content-margin">
@@ -65,7 +71,7 @@
 					{% if section['list'] %}
 						{% for item in section['list'] %}
 						<li class="app-list">
-							<a href="{{item['link']}}" >
+							<a href="{{item['link']}}" data-transition="slide" >
 								<img src="{{item['img']}}" class="ui-thumbnail ui-thumbnail-bordered" />
 								<h2>
 									{{item['title']}}
@@ -100,7 +106,7 @@
 		<div data-role="content" role="main">
 
 			<div id="branding-header">
-				<img src="{{pages[0]['img']}}" width="100%">
+				<img src="{{pages[0]['img']}}?{{version}}" width="100%">
 			</div>
 
 			<div class="ui-content-margin">
@@ -118,7 +124,7 @@
 
 				<div class="nd2-card">
 					<div class="card-media">
-						<img src="/static/images/vincent.jpg">
+						<img src="/static/images/vincent.jpg?{{version}}">
 					</div>
 
 					<div class="card-supporting-text">
@@ -201,27 +207,24 @@
 
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-    <script src="/static/vendor/waves/waves.min.js"></script>
-		<script src="/static/vendor/wow/wow.min.js"></script>
-    <script src="/static/js/nativedroid2.js"></script>
+    <script src="/static/js/jquery.min.js?{{version}}"></script>
+    <xscript src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js?{{version}}"></script>
+    <script src="/static/js/jquery.mobile.min.js?{{version}}"></script>
+    <script src="/static/vendor/waves/waves.min.js?{{version}}"></script>
+		<script src="/static/vendor/wow/wow.min.js?{{version}}"></script>
+    <script src="/static/js/nativedroid2.js?{{version}}"></script>
 
 		<<script type="text/javascript">
 
-				new $.nd2Toast({
-					message : "Welcome to Kadist",
-					action : {
-						color : "lime"
-					},
-
-					ttl : 4000
-				});
-
+			new $.nd2Toast({
+				message : "Welcome to Kadist",
+				action : {
+					color : "lime"
+				},
+				ttl : 4000
+			});
 
 		</script>
-
 
 
 </body>
