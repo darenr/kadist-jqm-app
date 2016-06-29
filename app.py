@@ -98,7 +98,7 @@ works = json.loads('''
 			],
 			"audio": {
 				"src": "/static/works/audio/discenza.aac",
-				"title": "Anthony Discenza and Peter Straub"
+				"title": "Anthony Discenza &<br>Peter Straub"
 			}
 		},
 		{
