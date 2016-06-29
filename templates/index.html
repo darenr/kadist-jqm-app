@@ -9,9 +9,10 @@
 	<meta charset="utf-8" />
  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="apple-mobile-web-app-title" content="{{title}}">
-	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
 
 	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
 
@@ -49,10 +50,10 @@
 	{% for page in pages %}
 	<div data-role="page" id="{{page['id']}}">
 
-	  	<div data-role="header" data-position="fixed" class="wow fadeIn">
-			<a data-iconpos="notext" href="#home" data-role="button" data-icon="home" title="Home">Home</a>
-		  	<h1 class="wow fadeIn" data-wow-delay='0.4s'>{{page['title']}}</h1>
-			<a data-iconpos="notext" href="#about" data-role="button" data-icon="info" title="About">About</a>
+		<div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+			<a href="#home" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-home"></i></a>
+		  <h1 class="wow fadeIn" data-wow-delay='0.4s'>{{page['title']}}</h1>
+			<a href="#about" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-info"></i></a>
 		</div>
 
 		<!-- /header -->
@@ -114,38 +115,20 @@
 			<nd2-include data-src="/left_panel"></nd2-include>
 
 			<div data-role="header">
-	      		<a data-ajax='false' href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+	      <a data-ajax='false' href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
 				<h1>{{project_name}}</h1>
-				<a data-iconpos="notext" href="#about" data-role="button" data-icon="info" title="About">About</a>
+  			<a href="#about" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-info"></i></a>
 			</div>
 			<!-- /header -->
 
+
 			<div data-role="content" role="main">
-				{% for img in work['img'] %}
-					<div class="nd2-card">
-						<div class="card-media">
-							<img src="{{img}}?{{version}}">
-						</div>
 
-						<div class="card-supporting-text">
-							<p>{{work['title']}} - #{{loop.index}}</p>
-						</div>
-					</div>
-				{% endfor %}
-
-				<div class="nd2-card">
-					<div class="card-supporting-text">
-						{% for text in work['html'] %}
-							<p>{{text}}</p>
-						{% endfor %}
-					</div>
-				</div>
-
-				{% if work['videos'] %}
-					{% for video in work['videos'] %}
+				<div class="ui-content-margin">
+					{% for img in work['img'] %}
 						<div class="nd2-card">
 							<div class="card-media">
-								{{video|safe}}
+								<img src="{{img}}?{{version}}">
 							</div>
 
 							<div class="card-supporting-text">
@@ -153,9 +136,16 @@
 							</div>
 						</div>
 					{% endfor %}
-				{% endif %}
 
+					<div class="nd2-card">
+						<div class="card-supporting-text">
+							{% for text in work['html'] %}
+								<p>{{text}}</p>
+							{% endfor %}
+						</div>
+					</div>
 
+				</div>
 			</div>
 		</div>
 
@@ -166,7 +156,7 @@
 	<div data-role="page" id="about">
 
 		<div data-role="header">
-			<a data-iconpos="notext" href="#home" data-role="button" data-icon="home" title="Home">Home</a>
+  			<a href="#about" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-home"></i></a>
 			<h1>{{project_name}}</h1>
 		</div>
 		<!-- /header -->
@@ -275,18 +265,17 @@
 
 
 
-    <script src="/static/vendor/waves/waves.min.js?{{version}}"></script>
     <script src="/static/js/jquery.min.js?{{version}}"></script>
     <script src="/static/js/jquery-ui.min.js?{{version}}"></script>
     <script src="/static/js/jquery.mobile.min.js?{{version}}"></script>
-	<script src="/static/vendor/wow/wow.min.js?{{version}}"></script>
+    <script src="/static/vendor/waves/waves.min.js?{{version}}"></script>
+		<script src="/static/vendor/wow/wow.min.js?{{version}}"></script>
     <script src="/static/js/nativedroid2.js?{{version}}"></script>
 
 		<script type="text/javascript">
 
 			$(function() {
 				$.nd2();
-				//$("#no-fouc").delay(250).animate({"opacity": "1"}, 250);
 			});
 
 		</script>

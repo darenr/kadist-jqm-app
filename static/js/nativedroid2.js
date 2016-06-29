@@ -49,7 +49,7 @@
 
 					// Apply waves.js
 					if(typeof Waves !== "undefined") {
-					    Waves.attach('.fancy a', ['waves-button']);
+					    Waves.attach('a', ['waves-button']);
 					    Waves.attach('button', ['waves-button']);
 					    Waves.init();
 
