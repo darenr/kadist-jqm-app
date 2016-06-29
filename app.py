@@ -13,7 +13,7 @@ import collections
 from flask.ext.cors import CORS
 
 project_name = 'Kadist'
-project_version = '13'
+project_version = '14'
 
 app = Flask(__name__)
 Compress(app)

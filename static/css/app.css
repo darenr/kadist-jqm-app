@@ -1,8 +1,8 @@
 #branding-header {
-  padding: 0;
-  margin: 0;
-  padding-top: 0;
-  padding-bottom: 15px;
+    padding: 0;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 15px;
 }
 
 .ui-listview>.ui-li-has-thumb>.ui-btn, .ui-listview>.ui-li-static.ui-li-has-thumb {
@@ -11,7 +11,7 @@
     background-color: #eee;
 }
 
-.ui-listview > li p, .ui-listview > li h2 {
+.ui-listview> li p, .ui-listview> li h2 {
     word-wrap: break-word !important;
     text-overflow: clip;
     overflow: hidden;
@@ -29,15 +29,14 @@
 }
 
 .ui-content-margin {
-  padding: 1em;
+    padding: 1em;
 }
 
-.ui-listview > li h2 {
-  text-transform: uppercase;
+.ui-listview> li h2 {
+    text-transform: uppercase;
 }
 
 .ui-thumbnail-bordered {
-
     padding: 4px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -49,4 +48,8 @@
 
 .nd2-sidepanel-profile .profile-thumbnail {
     border-radius: 4px;
+}
+
+.ui-mobile-viewport-transitioning .ui-header-fixed, .ui-mobile-viewport-transitioning .ui-footer-fixed {
+    visibility: hidden;
 }
