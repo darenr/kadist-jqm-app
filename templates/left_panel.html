@@ -16,6 +16,14 @@
 				{% for subwork in works  %}
 	        		<li><a href="#{{subwork['id']}}" data-ajax='false' data-icon="false">{{subwork['title']}}</a></li>
 				{% endfor %}
+		      </ul>
+
+		      <ul data-role="listview" data-inset="false">
+		        <li data-role="list-divider">Kadist Locations</li>
+				{% for page in pages[0]['sections'][0]['list']  %}
+	        		<li><a href="{{page['link']}}" data-ajax='false' data-icon="false">{{page['title']}}</a></li>
+				{% endfor %}
+
 				<li data-role="list-divider">Information</li>
         		<li><a href="#about" data-ajax='false' data-icon="false">About</a></li>
 		      </ul>
