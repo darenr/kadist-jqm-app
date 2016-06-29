@@ -145,6 +145,25 @@
 						</div>
 					</div>
 
+					{% if work['audio'] %}
+						<div class="nd2-card">
+							<div class="card-media">
+								<img src="/static/images/blurry_audio.jpg">
+								<div class="card-media-overlay with-background">
+									<div class="card-title has-supporting-text">
+											<audio controls>
+												<source src="{{work['audio']['src']}}">
+									  		<h3>Your browser does not support the audio tag.</h3>
+											</audio>
+											<br>
+											<h3 class="card-primary-title">{{work['audio']['title']}}</h3>
+											<br>
+											<h5 class="card-subtitle">Audio</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
 				</div>
 			</div>
 		</div>

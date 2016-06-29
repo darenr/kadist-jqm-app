@@ -92,13 +92,19 @@ works = json.loads('''
 		{
 			"id": "work2473",
 			"title": "ANTHONY DISCENZA: THE REPOSITORY OF THE FUTURE",
-			"img": ["/static/images/works/2473.jpg"],
-			"html": ["The Repository is a proposed speculative research entity intended to track and analyze new developments in the future as they unfold. By identifying the future as a site of active construction, The Repository hopes to identify emergent narratives of the present which may not be otherwise apprehensible. On Saturday June 25th, Kadist hosts the first working session of The Repository to collectively review a selection of past, obsolete or present constructions of the future while introducing The Repository’s proposed strategies for implementation and development to come."]
+			"img": ["/static/works/images/2473.jpg"],
+			"html": [
+				"The Repository is a proposed speculative research entity intended to track and analyze new developments in the future as they unfold. By identifying the future as a site of active construction, The Repository hopes to identify emergent narratives of the present which may not be otherwise apprehensible. On Saturday June 25th, Kadist hosts the first working session of The Repository to collectively review a selection of past, obsolete or present constructions of the future while introducing The Repository’s proposed strategies for implementation and development to come."
+			],
+			"audio": {
+				"src": "/static/works/audio/discenza.aac",
+				"title": "Anthony Discenza and Peter Straub"
+			}
 		},
 		{
 			"id": "work2472",
 			"title": "MALIK GAINES ON SYLVESTER",
-			"img": ["/static/images/works/2472.jpg"],
+			"img": ["/static/works/images/2472.jpg"],
 			"html": [
 				"Malik Gaines discusses Sylvester, who was a member of San Francisco's Cockettes troupe before becoming a disco star of the 1970s. Sylvester combined a queer performance of gender with signs and sounds of musical virtuosity, making a unique contribution to his era. Gaines considers Sylvester among other radical performers in his forthcoming book ",
 				"Excesses of the Sixties: Black Performance on the Outskirts of the Left.",
@@ -110,7 +116,7 @@ works = json.loads('''
 			"id": "work2462",
 			"title": "CARLOS AMORALES: CYCLOPE",
 			"img": [
-				"/static/images/works/2462.png"
+				"/static/works/images/2462.png"
 			],
 			"html": [
 				"For the last two years, Mexico-City based artist Carlos Amorales has been developing a series of works in relation to what he calls 'Cubismo ideológico'. Three films and a manifesto arose from this investigaton and Cyclope at Kadist marks the US premier of the first performance in this 'Cubismo ideológico' series. Philippe Eustachon, Enrique Arriaga, and special guest Elsa-Louise Manceaux join the artist in this percussive and spoken word concert."
@@ -120,14 +126,14 @@ works = json.loads('''
 			"id": "work2464",
 			"title": "SHOOSHIE SULAIMAN",
 			"img": [
-				"/static/images/works/2464a.jpg",
-				"/static/images/works/2464b.jpg",
-				"/static/images/works/2464c.jpg",
-				"/static/images/works/2464d.jpg",
-				"/static/images/works/2464e.jpg",
-				"/static/images/works/2464f.jpg",
-				"/static/images/works/2464g.jpg",
-				"/static/images/works/2464h.jpg"
+				"/static/works/images/2464a.jpg",
+				"/static/works/images/2464b.jpg",
+				"/static/works/images/2464c.jpg",
+				"/static/works/images/2464d.jpg",
+				"/static/works/images/2464e.jpg",
+				"/static/works/images/2464f.jpg",
+				"/static/works/images/2464g.jpg",
+				"/static/works/images/2464h.jpg"
 			],
 			"html": ["Spring artist in residency, Shooshie Sulaiman is part of the Kadist collection. Her first solo exhibition in Europe, will open at Kadist Paris on June 10, 2016.",
 				"The work of Malaysian artist Shooshie Sulaiman develops in various forms, from site-specific installations and outdoor performances, to a daily practice of writing and drawing. She started her artistic practice during the 1990’s, when Malaysia opened to the free market and became more international, not without psychological impact on its society. Thus, her work can be perceived as a precious testimony of what the country went through, an emotional landscape of what happened politically and socially during that time.",
@@ -139,7 +145,7 @@ works = json.loads('''
 		{
 			"id": "work2466",
 			"title": "YIN-JU CHEN: EXTRASTELLAR EVALUATIONS",
-			"img": ["/static/images/works/2466.jpg"],
+			"img": ["/static/works/images/2466.jpg"],
 			"html": [
 				"I Adama",
 				"Greetings humans.",
