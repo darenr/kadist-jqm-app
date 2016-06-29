@@ -1,5 +1,12 @@
+//
+// ...the magic starts here...
+//
+/////////////////////////////////
 
+
+// ND2 Widgets
 (function($){
+
 	$.widget("nd2.gallery",{
 		options: {
 			count : 15,
@@ -73,6 +80,58 @@
 		$(document).trigger("includebeforecreate");
 		return $("nd2-include", e.target).include();
 	});
+
+
+		// nd2-ad
+		$.widget("nd2.ad",{
+			options: {
+				banner : null,
+				path : null,
+				active : null,
+				extension : null,
+				post : {}
+			},
+			_create: function() {
+
+					var _self = this;
+
+					window.setTimeout(function() {
+
+						if(typeof window.nd2 !== 'undefined'
+								&& typeof window.nd2.settings !== 'undefined'
+								&& typeof window.nd2.settings.advertising !== 'undefined') {
+									if(typeof window.nd2.settings.advertising.path !== 'undefined') { _self.options.path = window.nd2.settings.advertising.path; }
+									if(typeof window.nd2.settings.advertising.active !== 'undefined') { _self.options.active = window.nd2.settings.advertising.active; }
+									if(typeof window.nd2.settings.advertising.extension !== 'undefined') { _self.options.extension = window.nd2.settings.advertising.extension; }
+								}
+
+						var el = _self.element;
+						var opts = $.extend(_self.options, el.data("options"));
+						$(document).trigger("createinclude");
+
+						if(opts.active && opts.banner !== null) {
+							var src = (opts.path || "")+opts.banner+(opts.extension || "");
+							el.addClass("nd2-banner");
+							el.load(src,opts.post,function() {
+								el.enhanceWithin();
+							});
+						}
+
+					},600);
+
+			},
+			_update: function() {
+	//			console.log("update?");
+			},
+			refresh: function() {
+				return this._update();
+			}
+		});
+
+		$(document).bind("pagecreate", function(e) {
+			$(document).trigger("includebeforecreate");
+			return $("nd2-ad", e.target).ad();
+		});
 
 
 
@@ -538,7 +597,7 @@
 
 			// nd2 Project Settings
 				(function ($) {
-					$.nd2 = function (options) {
+				    $.nd2 = function (options) {
 
 									var _self = this;
 
@@ -563,6 +622,7 @@
 											_self.iniWow();
 											_self.iniWaves();
 											_self.iniSmoothTransition();
+											_self.iniGoogleAnalytics();
 
 									};
 
@@ -590,8 +650,8 @@
 
 									_self.iniWaves = function() {
 										if(typeof Waves !== "undefined") {
-										    Waves.attach('.fancy a', ['waves-button']);
-										    Waves.attach('.fancy button', ['waves-button']);
+										    Waves.attach('a', ['waves-button']);
+										    Waves.attach('button', ['waves-button']);
 										    Waves.init();
 												$("body").find(".ui-flipswitch-on").removeClass("waves-effect");
 												Waves.attach('.ui-flipswitch',['waves-button','waves-light']);
@@ -622,6 +682,33 @@
 										        hash: a.hash,
 										        search: a.search
 										    };
+									};
+
+									_self.iniGoogleAnalytics = function() {
+
+											var _ga = {
+												send : function(url) {
+												  (!url) ? ga('send', 'pageview') : ga('send', 'pageview', url);
+												}
+											};
+
+											if(_self.options.stats.analyticsUA) {
+											  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+											  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+											  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+											  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+											  ga('create', _self.options.stats.analyticsUA, 'auto');
+												_ga.send(null);
+
+												// Trigger Page Change
+
+												$("body").on("pagechange",function(evt,data) {
+													_ga.send(_self.getUrlParts(data.options.absUrl).pathname);
+												});
+
+											}
+
 									};
 
 									_self.build();
